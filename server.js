@@ -12,18 +12,6 @@ app.get("/", (request, response) => {
     response.send("<h1>hello world from GET</h1>");
 });
 
-app.post("/", (request, response) => {
-    response.send("<h1>hello world from POST</h1>");
-});
-
-app.put("/", (request, response) => {
-    response.send("<h1>hello world from PUT</h1>");
-});
-
-app.delete("/", (request, response) => {
-    response.send("<h1>hello world from DELETE</h1>");
-});
-
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
