@@ -6,11 +6,18 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 5000;
 
-app.use("/meusite", express.static(path.join(__dirname, "client")));
+const consoleMethod = (request, response, next) => {
+    console.log(request.method);
+    next();
+};
 
-app.get("/", (request, response) => {
-    response.send("<h1>hello world from GET</h1>");
-});
+const hello = (request, response) => {
+    response.send("hello world");
+};
+
+app.get("/", consoleMethod, hello);
+
+app.post("/", consoleMethod, hello);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
