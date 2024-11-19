@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
-const port = 5000;
+const PORT = 5000;
 
 app.use("/meusite", express.static(path.join(__dirname, "client")));
 
@@ -25,5 +25,5 @@ app.delete("/", (request, response) => {
 });
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${PORT}`);
 });
