@@ -6,8 +6,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 5000;
 
-const consoleMethod = (request, response, next) => {
-    console.log(request.method);
+const consoleBody = (request, response, next) => {
+    console.log(request.body);
     next();
 };
 
@@ -15,9 +15,11 @@ const hello = (request, response) => {
     response.send("hello world");
 };
 
-app.get("/", consoleMethod, hello);
+app.use("/", express.json());
+app.use("/", consoleBody);
 
-app.post("/", consoleMethod, hello);
+app.get("/", hello);
+app.post("/", hello);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
